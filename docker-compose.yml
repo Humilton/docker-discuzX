@@ -1,0 +1,8 @@
+version: "1"
+services:
+
+   DiscuzX:
+     image: humilton/DiscuzX!
+     ports:
+       - "8020:80"
+     restart: always

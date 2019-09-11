@@ -26,7 +26,7 @@ RUN find "$APACHE_CONFDIR" -type f -exec sed -ri ' \
 	s!^(\s*ErrorLog)\s+\S+!\1 /proc/self/fd/2!g; \
 ' '{}' ';'
 
-RUN SOFT_NAME="Discuz_X3.4_SC_UTF8【20190622】" && wget "http://192.168.1.8/${SOFT_NAME}.zip" && unzip "${SOFT_NAME}.zip" -d "${SOFT_NAME}" && cd "${SOFT_NAME}" && ls -lha && cp docker-apache.conf "${SOFT_NAME}" && cp docker-entrypoint.sh "${SOFT_NAME}"
+RUN SOFT_NAME="Discuz_X3.4_SC_UTF8【20190622】" && unzip "${SOFT_NAME}.zip" -d "${SOFT_NAME}" && cd "${SOFT_NAME}" && ls -lha && cp docker-apache.conf "${SOFT_NAME}" && cp docker-entrypoint.sh "${SOFT_NAME}"
 ADD "${SOFT_NAME}/upload" /usr/src/discuz 
 RUN cp /usr/src/discuz/docker-apache.conf /etc/apache2/sites-available/discuz.conf \
 	&& a2dissite 000-default \
